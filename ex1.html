@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA DE EXERCICIOS 01</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>EXERCICIO 1</h2>
+    <form>
+    <label>Nome:</label><input id="nome" placeholder="Digite o nome" required>
+    <label>Peso(kg):</label><input id="peso" type="number" placeholder="Informe o peso" required>
+    <label>Altura(cm):</label><input id="altura" type="number" placeholder="Informe a altura" required>
+    <button type="button" onclick="func()">Enviar</button>
+    </form>
+    <p id="resultado">Aguardando envio...</p>
+
+    <script>
+        function func(){
+            let nome = document.getElementById("nome").value
+            let peso = document.getElementById("peso").value
+            let altura = document.getElementById("altura").value
+            altura = altura/100
+            let imc = peso/(altura*altura)
+
+            if (imc < 16){
+                text = "Baixo peso muito grave &#128128"
+            } else if (imc <16.99){
+                text = "Baixo peso grave &#129431"
+            } else if (imc <18.49){
+                text = "Baixo peso &#128020"
+            } else if (imc <24.99){
+                text = "Peso Normal &#128077"
+            } else if (imc <29.99){
+                text = "Sobrepeso &#129335"
+            } else if (imc <34.99){
+                text = "Obesidade grau I &#128022"
+            } else if (imc <39.99){
+                text = "Obesidade grau II &#128024"
+            } else {
+                text = "Obesidade grau III &#128011"
+            }
+            document.getElementById("resultado").innerHTML = nome + " possui índice de massa corporal igual a " + parseFloat(imc.toFixed(2)) + ", sendo classificado como: " + text
+        }
+    </script>
+</body>
+</html>

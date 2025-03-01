@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA DE EXERCICIOS 01</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>EXERCICIO 1</h2>
+    <form>
+    <label>Código:</label><input id="cdg" placeholder="Digite o código" type="number"  min="0" required>
+    <label>Número de horas trabalhadas no mês:</label><input id="horas" type="number" placeholder="Informe o número de horas" required>
+    <label>Turno de trabalho:</label><input id="turno" placeholder="Informe o turno de trabalho" maxlength="1" required>
+    <label>Categoria :</label><input id="ctg" placeholder="Informe a categoria" maxlength="1" required>
+    <button type="button" onclick="func()">Enviar</button>
+    </form>
+    <p id="resultado">Aguardando envio...</p>
+
+    <script>
+        function func(){
+            let cdg = document.getElementById("cdg").value
+            let horas = document.getElementById("horas").value
+            let turno = document.getElementById("turno").value.toUpperCase()
+            let ctg = document.getElementById("ctg").value.toUpperCase()
+
+            let salarioMinimo = parseFloat(prompt("Digite o valor do salário mínimo estadual: "))
+            let valorHoraTrabalhada = 0
+
+            if (ctg === 'G') {
+                if (turno === 'N') {
+                    valorHoraTrabalhada = salarioMinimo * 0.06
+                } else if (turno === 'M' || turno === 'V') {
+                    valorHoraTrabalhada = salarioMinimo * 0.04
+                } else {
+                    alert("Turno inválido.")
+                    return
+                }
+            } else if (ctg === 'F') {
+                if (turno === 'N') {
+                    valorHoraTrabalhada = salarioMinimo * 0.02
+                } else if (turno === 'M' || turno === 'V') {
+                    valorHoraTrabalhada = salarioMinimo * 0.01
+                } else {
+                    alert("Turno inválido.")
+                    return
+                }
+            } else {
+                alert("Categoria inválida.")
+                return
+            }
+
+            let salarioInicial = valorHoraTrabalhada * horas
+            let auxilioAlimentacao = 0
+
+            if (salarioInicial <= 800) {
+                auxilioAlimentacao = salarioInicial * 0.25
+            } else if (salarioInicial > 800 && salarioInicial <= 1200) {
+                auxilioAlimentacao = salarioInicial * 0.20
+            } else if (salarioInicial > 1200) {
+                auxilioAlimentacao = salarioInicial * 0.15
+            }
+
+            let salarioFinal = salarioInicial + auxilioAlimentacao
+
+            document.getElementById("resultado").innerHTML = "Código: " + cdg + "<br>Número de horas trabalhadas: "+ horas + "<br>Valor da hora trabalhada: " + valorHoraTrabalhada.toFixed(2) + "<br>Salário inicial: " + salarioInicial.toFixed(2) + "<br>Auxílio alimentação: " + auxilioAlimentacao.toFixed(2) + "<br>Salário final (incluindo auxílio): " + salarioFinal.toFixed(2)
+        }
+    </script>
+</body>
+</html>

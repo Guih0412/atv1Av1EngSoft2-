@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA DE EXERCICIOS 01</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>EXERCICIO 2</h2>
+    <form>
+        <label>Idade:</label><input id="age" type="number" placeholder="Informe a idade" required>
+        <button type="button" onclick="func()">Enviar</button>
+    </form>
+    <p id="resultado">Aguardando envio...</p>
+
+    <form>
+    <label>Nota prática laboratório:</label><input id="n1" type="number" placeholder="Digite a nota" required>
+    <label>Nota prova do semestre:</label><input id="n2" type="number" placeholder="Digite a nota" required>
+    <label>Nota Trabalho teórico:</label><input id="n3" type="number" placeholder="Digite a nota" required>
+    <button type="button" onclick="func2()">Enviar</button>
+    </form>
+    <p id="resultado2">Aguardando envio...</p>
+
+    <script>
+        function func(){
+            let idade = document.getElementById("age").value
+            if  (idade > 0 && idade < 15){
+                text = "Criança"
+            } else if (idade < 30){
+                text = "Jovem"
+            } else if (idade < 60){
+                text = "Adulto"
+            } else{
+                text = "Idoso"
+            }
+            document.getElementById("resultado").innerHTML = text
+        }
+
+        function func2(){
+            let n1 = document.getElementById("n1").value
+            let n2 = document.getElementById("n2").value
+            let n3 = document.getElementById("n3").value
+            var media = (n1*2+n2*5+n3*3) / 10
+
+            if (media <= 5){
+                classificacao = "F"
+            } else if (media < 6){
+                classificacao = "E"
+            } else if (media < 7){
+                classificacao = "D"
+            } else if (media < 8){
+                classificacao = "C"
+            } else if (media < 9){
+                classificacao = "B"
+            } else {
+                classificacao = "A"
+            }
+            document.getElementById("resultado2").innerHTML = "A media do aluno é "+ parseFloat(media.toFixed(2)) + " e sua classificação é "+ classificacao
+        }
+    </script>
+    
+</body>
+</html>

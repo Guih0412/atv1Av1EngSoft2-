@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA DE EXERCICIOS 01</title>
+
+    <script>
+        var n1 = parseFloat(prompt("Digite o primeiro número:"))
+        var op = prompt("Digite a operação (soma ou subtração):").toLowerCase()
+        var n2 = parseFloat(prompt("Digite o segundo número:"))
+       
+        function calcular(num1, num2, operacao) {
+            let resultado
+            if (operacao === "soma") {
+                resultado = num1 + num2
+            } else if (operacao === "subtração") {
+                resultado = num1 - num2
+            } else {
+                alert("Operação inválida. Por favor, insira 'soma' ou 'subtração'.")
+                return
+            }   
+            alert("O resultado é: " + resultado)
+        }
+        
+        calcular(n1,n2,op)
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

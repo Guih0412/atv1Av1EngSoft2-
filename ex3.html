@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA DE EXERCICIOS 01</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h2>EXERCICIO 3</h2>
+    <form>
+        <label for="nPecas">Quantidade de Peças:</label>
+        <input id="nPecas" type="number" placeholder="Digite a quantidade" required>
+        <label for="regiao">Escolha uma região:</label>
+        <select name="regiao" id="regiao" required>
+            <option value="">Selecione uma região</option>
+            <option value="1">Sul</option>
+            <option value="2">Sudeste</option>
+            <option value="3">Centro-Oeste</option>
+        </select>
+        <label for="distancia">Distância (km):</label>
+        <input id="distancia" type="number" placeholder="Informe a distância" required>
+        <label for="rasCheck">Deseja rastreamento:</label><input id="rasCheck" type="checkbox">
+        <button type="button" onclick="func()">Enviar</button>
+    </form>
+
+    <p id="resultado">Aguardando envio...</p>
+
+    <script>
+        function func(){
+            let nPecas = document.getElementById("nPecas").value
+            let regiao = document.getElementById("regiao").value
+            let distancia = document.getElementById("distancia").value
+            let rasCheck = document.getElementById('rasCheck')
+            let precoComb = parseFloat(prompt("Informe o preço do combustivel por km rodado:"))
+
+            const valoresPecas = {
+                1: 1.00,
+                2: 1.20,
+                3: 1.30
+            };
+
+            const descontos = {
+                1: 0.10,
+                2: 0.12,
+                3: 0.13
+            };
+
+            let valorFretePecas = 0
+            if (nPecas <= 1000) {
+                valorFretePecas = nPecas * valoresPecas[regiao]
+            } else {
+                valorFretePecas = 1000 * valoresPecas[regiao]
+                let pecasExtras = nPecas - 1000
+                valorFretePecas += pecasExtras * (valoresPecas[regiao] * (1 - descontos[regiao]))
+            }
+            let valorFreteDist = distancia * precoComb
+            let valorRast = rasCheck.checked ? 200 : 0
+
+            let valorFrete = valorFretePecas + valorFreteDist + valorRast
+
+            document.getElementById("resultado").innerHTML = "Taxa do rastreamento: R$"+ valorRast.toFixed(2) + "<br>Valor do frete pelas peças: R$" + valorFretePecas.toFixed(2) + "<br>Valor do frete por quilômetro: R$" + valorFreteDist.toFixed(2) + "<br>Total do frete: R$" + valorFrete.toFixed(2)
+        }
+    </script>
+</body>
+</html>

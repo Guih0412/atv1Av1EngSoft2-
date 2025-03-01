@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA DE EXERCICIOS 01</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>EXERCICIO 1</h2>
+    <form>
+    <label>Data:</label><input id="data" type="date" placeholder="Digite a Data" required>
+    <button type="button" onclick="func()">Enviar</button>
+    </form>
+    <p id="resultado">Aguardando envio...</p>
+
+    <script>
+        function func(){
+            let data = document.getElementById("data").value
+            const arrayData = data.split("-");
+
+            let dia = arrayData[2]
+            let mes = ""
+            switch (parseInt(arrayData[1])){
+                case 1:
+                    mes = " de janeiro de "
+                    break
+
+                case 2:
+                    mes =  " de fevereiro de "
+                    break
+
+                case 3:
+                    mes =  " de março de "
+                    break
+
+                case 4:
+                    mes =  " de abril de "
+                    break
+
+                case 5:
+                    mes =  " de maio de "
+                    break
+
+                case 6:
+                    mes =  " de junho de "
+                    break
+
+                case 7:
+                    mes =  " de julho de "
+                    break
+
+                case 8:
+                    mes =  "de agosto de "
+                    break
+
+                case 9:
+                    mes =  " de setembro de "
+                    break
+
+                case 10:
+                    mes =  " de outubro de "
+                    break
+
+                case 11:
+                    mes =  " de novembro de "
+                    break
+
+                default:
+                    mes = " de dezembro de "
+            }
+            let ano = arrayData[0]
+
+            document.getElementById("resultado").innerHTML = dia + mes + ano
+        }
+    </script>
+</body>
+</html>
